@@ -1,136 +1,124 @@
-<p align="center">
-  <img alt="ToolJet logo" src="static/img/logo.svg" width="100px" />
-  <h1 align="center">ToolJet Documentation</h1>
-</p>
+# ToolJet Documentation
 
-The directory "ToolJet/docs/" holds the code and markdown source files for the ToolJet documentation website, which is accessible at [docs.tooljet.ai](docs.tooljet.ai)
+Welcome to the ToolJet project documentation! This directory contains comprehensive documentation for developers, contributors, and users of the ToolJet open-source low-code framework.
 
-## Index
-- [Feedback](#feedback)
-- [Documentation Issues](#documentation-issues)
-- [Contributing](#contributing)
-  - [Repository organization](#repository-organization)
-  - [Workflow](#workflow)
-  - [Conventions](#conventions)
-- [Local setup](#local-setup)
+## 📚 Documentation Structure
 
-## Feedback
-We welcome your valuable feedback on the documentation! Please feel free to join our [Community on Slack](https://tooljet.com/slack) and send us a message. We would be delighted to hear from you and assist you with any queries or concerns you may have. 
+### Core Documentation
 
-## Documentation Issues
-If you come across any issues with the documentation or have a feature request related explicitly to it, we encourage you to create a new [GitHub issue](https://github.com/ToolJet/ToolJet/issues/new?assignees=&labels=documentation&template=03_documentation_report.yml&title=%5Bdocs%5D%3A+) following the template. Before creating a new issue, we kindly request that you check for existing issues to avoid duplication. 
+- **[Architecture Overview](architecture.md)** - System design, components, and technical architecture
+- **[Developer Onboarding](onboarding.md)** - Getting started guide for new contributors
+- **[Data Model](data-model.md)** - Database schema, entities, and relationships
+- **[Deployment Guide](deployment.md)** - Production deployment strategies and configurations
 
-In case you encounter any issues with the ToolJet product, please select the relevant issue template from [here](https://github.com/ToolJet/ToolJet/issues/new/choose).
+### Architecture Decision Records (ADRs)
 
-## Contributing
-To contribute to ToolJet documentation, you need to fork this repository and submit a pull request for the Markdown and/or image changes that you're proposing.
+- **[ADR Index](adr/README.md)** - Overview of all architectural decisions
+- **[ADR-0001: Record Architecture Decisions](adr/0001-record-architecture-decisions.md)** - Establishing ADR process
 
-### Repository organization
-The content in this directory follows the organization of documentation at https://docs.tooljet.ai
+## 🚀 Quick Start
 
-This directory contains the following folders:
+### For Developers
+1. Read the [Developer Onboarding Guide](onboarding.md)
+2. Review the [Architecture Overview](architecture.md)
+3. Set up your local development environment
+4. Explore the codebase structure
 
-```
-/tooljet/docs
-├── sidebars.json        # sidebar for the next(upcoming) docs version
-├── docs                 # docs directory for the next(upcoming) docs version
-│   ├── Enterprise
-│   │   └── multi-environment.md
-│   └── tooljet-database.md
-├── versions.json        # file to indicate what versions are available
-├── versioned_docs
-│   ├── version-x.x.x    # Current/latest version (set it on docusauras.config.js)
-│   │   ├── Enterprise
-│   │   │   └── multi-environment.md   # https://docs.tooljet.ai/docs/Enterprise/multi-environment
-│   │   └── tooljet-database.md.       # https://docs.tooljet.ai/docs/tooljet-database
-│   └── version-2.0.0
-│   │   ├── Enterprise
-│   │   │   └── multi-environment.md   # https://docs.tooljet.ai/docs/2.0.0/Enterprise/multi-environment
-│   │   └── tooljet-database.md
-│   └── version-1.0.0
-│       ├── Enterprise
-│       │   └── multi-environment.md   # https://docs.tooljet.ai/docs/1.0.0/Enterprise/multi-environment
-│       └── tooljet-database.md
-├── versioned_sidebars                 # includes sidebar for the specific versions
-│   ├── version-x.x.x-sidebars.json    
-│   └── version-1.0.0-sidebars.json
-└── src
-│   └── img                           # contains folders that references the images (such as screenshots) used in the \docs\topic
-├── docusaurus.config.js
-└── package.json
-```
+### For Contributors
+1. Check the [Contributing Guidelines](../CONTRIBUTING.md)
+2. Review existing [GitHub Issues](https://github.com/ToolJet/ToolJet/issues)
+3. Join the [Slack Community](https://tooljet.ai/slack)
+4. Start with small contributions
 
-`\src` - contains the ToolJet documentation website code. The documentation website is built using [Docusaurus 2](https://docusaurus.io/).
+### For Users
+1. Visit the [Official Documentation](https://docs.tooljet.ai)
+2. Try the [Quick Start Guide](https://docs.tooljet.ai/docs/)
+3. Explore [Component Reference](https://docs.tooljet.ai/docs/widgets/)
+4. Check [Data Source Integrations](https://docs.tooljet.ai/docs/data-sources/)
 
-`tooljet\docs\docs\` - This directory serves as the base directory for the documentation. Any modifications made within this directory will be reflected in the next version of the documentation. Each folder inside this directory corresponds to specific content and contains markdown files related to that content.
+## 🏗️ Project Architecture
 
-### Workflow
-The two suggested workflows are:
+ToolJet is built with a modern, scalable architecture:
 
-- For small changes, use the "Edit this page" button on each page to edit the Markdown file directly on GitHub.
-- If you plan to make significant changes or preview the changes locally, clone the repo to your system to and follow the installation and local development steps in [Local setup](#local-setup).
+- **Backend**: NestJS (Node.js/TypeScript)
+- **Frontend**: React 18 with modern tooling
+- **Database**: PostgreSQL with TypeORM
+- **Real-time**: WebSocket-based collaboration
+- **Deployment**: Docker, Kubernetes, Cloud platforms
 
-### Conventions
+## 📖 Documentation Standards
 
-- The front matter for every markdown file should include the `id` and a `title`. `id` will be used to reference the file in `sidebar.js` or `version-x.x.x-sidebars.json` for a specific version.
-  ```yaml
-  ---
-  id: building-internal-tool
-  title: Building internal tool with ToolJet
-  ---
-  ```
+### Writing Guidelines
+- Use clear, concise language
+- Include code examples where helpful
+- Keep documentation up-to-date with code changes
+- Follow markdown best practices
 
-- Use lowercase for file and folder names and dashes `-` as separators.
-  For example:
-  - `/docs/data-sources/sap-hana.md`
-  - `/docs/how-to/bulk-update-multiple-rows.md`
+### Maintenance
+- Documentation is reviewed during code reviews
+- Major changes require documentation updates
+- Regular documentation audits and updates
 
-- Images are important to bring the product to life and clarify the written content. For images you're adding to the repo, store them in the `img` subfolder inside `static` folder. For every topic there needs to be a folder inside `\static\img\` section, for example: `static\img\how-to\bulk-update\query1.png`.
-  When you link to an image, the path and filename are case-sensitive. The convention is for image filenames to be all lowercase and use dashes `-` for separators.
+## 🔧 Development Workflow
 
-  > Example code for adding an image in markdown file:
-  ```
-  <div style={{textAlign: 'center'}}>
+### Documentation Updates
+1. Make changes to relevant documentation files
+2. Test any code examples or procedures
+3. Submit pull request with documentation changes
+4. Include documentation updates in feature PRs
 
-  <img className="screenshot-full" src="/img/button-group.png" alt="Button group" />
+### ADR Process
+1. Create ADR for significant architectural decisions
+2. Follow the ADR template and numbering system
+3. Update ADR index when creating new records
+4. Review and approve ADRs through team consensus
 
-  </div>
-  ```
+## 📋 Available Commands
 
-## Local setup
+The ToolJet project supports several documentation-related commands:
 
-### Requirements
+- `/init-docs` - Initialize project documentation structure
+- `/update-docs` - Update documentation to reflect code changes
+- `/adr "Title"` - Create new Architecture Decision Record
+- `/gen-er-diagram` - Generate ER diagram from database models
+- `/gen-arch-diagram` - Generate system architecture diagram
+- `/check-docs` - Validate documentation freshness
+- `/sync-docs` - Sync all documentation with current codebase
 
-- **Node version 16.14**
+## 🤝 Contributing to Documentation
 
-### Installation
-```console
-yarn install
-```
+### How to Contribute
+1. **Identify gaps**: Look for missing or outdated documentation
+2. **Create issues**: Report documentation problems or suggestions
+3. **Submit PRs**: Contribute improvements and new documentation
+4. **Review**: Help review documentation changes from others
 
-**Note:** Please note that if you make any changes that will be reflected in the upcoming version of the ToolJet documentation, you should set the **includeCurrentVersion** value to `true` in the docusaurus.config.js file. After making the necessary changes, be sure to set the value back to `false` and then commit the changes. Setting the value to `true` will load the `docs/docs/` base directory as the `next` version for local development, allowing you to preview the changes.
+### Areas Needing Documentation
+- API reference documentation
+- Plugin development guides
+- Advanced configuration options
+- Performance optimization guides
+- Security best practices
 
-### Local Development
-```console
-yarn start
-```
+## 📞 Support and Community
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+### Getting Help
+- **Documentation Issues**: Create GitHub issues for documentation problems
+- **Technical Questions**: Join [Slack Community](https://tooljet.ai/slack)
+- **Bug Reports**: Use [GitHub Issues](https://github.com/ToolJet/ToolJet/issues)
+- **Feature Requests**: Submit via [GitHub Discussions](https://github.com/ToolJet/ToolJet/discussions)
 
-### Build
-```console
-yarn build
-```
+### Community Resources
+- [GitHub Repository](https://github.com/ToolJet/ToolJet)
+- [Official Website](https://tooljet.ai)
+- [Documentation Site](https://docs.tooljet.ai)
+- [Slack Community](https://tooljet.ai/slack)
+- [Discord Server](https://discord.gg/tooljet)
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## 📄 License
 
-### Deployment
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
+ToolJet is released under the GNU Affero General Public License v3.0. See [LICENSE](../LICENSE) for details.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+---
 
-## Thanks 💜
-
-Thanks for all your contributions and efforts towards improving the ToolJet documentation. We thank you being part of our ✨ community ✨!
+**Note**: This documentation is maintained alongside the ToolJet codebase. For the most up-to-date information, always refer to the latest version in the repository.
